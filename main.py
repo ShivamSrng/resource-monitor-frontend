@@ -1,5 +1,5 @@
-import src.engine as engine
+from src.engine import Engine
 
 
 if __name__ == "__main__":
-    engine.Engine().run()
+    Engine().run()

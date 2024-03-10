@@ -1,9 +1,14 @@
 import pandas as pd
-import streamlit as st
 import altair as alt
+import streamlit as st
 
 
 class NetworkStats:
+  """
+  The NetworkStats class is responsible for showing the Network stats.
+  """
+  
+  
   def __init__(self) -> None:
     self.cnt = 0
     self.dataframe_bytes = pd.DataFrame()
@@ -11,6 +16,16 @@ class NetworkStats:
 
   
   def prepare_for_showing_stats(self, network_related_info: dict) -> None:
+    """
+    The function prepares for showing the network stats.
+    
+    Args:
+    - network_related_info (dict): The dictionary containing the network related information.
+    
+    Returns:
+    - None
+    """
+    
     self.dataframe_bytes = pd.DataFrame(columns=["cnt", "bytes_sent", "bytes_recv"])
     self.dataframe_bytes.loc[len(self.dataframe_bytes)] = [self.cnt, network_related_info["bytes_sent"] // (2**20), network_related_info["bytes_recv"] // (2**20)]
 
@@ -20,6 +35,16 @@ class NetworkStats:
   
 
   def run(self, network_stats: dict) -> None:
+    """
+    The function runs the network stats.
+    
+    Args:
+    - network_stats (dict): The dictionary containing the network stats.
+    
+    Returns:
+    - None
+    """
+    
     placeholder_network = st.empty()
     self.dataframe_bytes.loc[len(self.dataframe_bytes)] = [self.cnt, network_stats["bytes_sent"] // (2**20), network_stats["bytes_recv"] // (2**20)]
     self.dataframe_packets.loc[len(self.dataframe_packets)] = [self.cnt, network_stats["packets_sent"], network_stats["packets_recv"]]

@@ -1,20 +1,44 @@
 import pandas as pd
 import streamlit as st
-import altair as alt
 
 
 class CPUStats:
+  """
+  The CPUStats class is responsible for showing the CPU stats.
+  """
+  
+  
   def __init__(self) -> None:
     self.total_cores = 0
     self.dataframe_cpu_percent_usage = pd.DataFrame()
 
   
   def prepare_for_showing_stats(self, cpu_related_info: dict) -> None:
+    """
+    The function prepares for showing the CPU stats.
+    
+    Args:
+    - cpu_related_info (dict): The dictionary containing the CPU related information.
+    
+    Returns:
+    - None
+    """
+    
     self.total_cores = cpu_related_info["cpu_count"]
     self.dataframe_cpu_percent_usage = pd.DataFrame(columns=[f"core_{i}" for i in range(self.total_cores)])
     
 
   def run(self, cpu_stats: dict) -> None:
+    """
+    The function runs the CPU stats.
+    
+    Args:
+    - cpu_stats (dict): The dictionary containing the CPU stats.
+    
+    Returns:
+    - None
+    """
+    
     placeholder_cpu = st.empty()
     with placeholder_cpu.container():
       st.subheader('CPU Usage')

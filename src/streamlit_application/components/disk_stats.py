@@ -1,19 +1,32 @@
 import pandas as pd
-import streamlit as st
 import altair as alt
-
+import streamlit as st
 
 class DiskStats:
+  """
+  The DiskStats class is responsible for showing the Disk stats.
+  """
+  
+  
   def __init__(self) -> None:
     self.total_disk = 0
     self.used_disk = 0
     self.free_disk = 0
     self.cnt = 0
-    
     self.dataframe_disk_usage = pd.DataFrame()
 
   
   def prepare_for_showing_stats(self, disk_related_info: dict) -> None:
+    """
+    The function prepares for showing the disk stats.
+    
+    Args:
+    - disk_related_info (dict): The dictionary containing the disk related information.
+    
+    Returns:
+    - None
+    """
+    
     self.total_disk = disk_related_info["disk_total"]
     self.used_disk = disk_related_info["disk_used"]
     self.free_disk = disk_related_info["disk_free"]
@@ -24,6 +37,16 @@ class DiskStats:
   
 
   def run(self, disk_stats: dict) -> None:
+    """
+    The function runs the disk stats.
+    
+    Args:
+    - disk_stats (dict): The dictionary containing the disk stats.
+    
+    Returns:
+    - None
+    """
+    
     placeholder_disk = st.empty()
     self.dataframe_disk_usage.loc[len(self.dataframe_disk_usage)] = [self.cnt, disk_stats["disk_percent"]]
     self.cnt += 1

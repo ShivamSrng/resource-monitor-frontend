@@ -3,10 +3,23 @@ from src.database.database_handler import DatabaseHandler
 
 
 class LoginPage:
-  def __init__(self):
+  """
+  The LoginPage class is responsible for showing the login page.
+  """
+  
+  
+  def __init__(self) -> None:
     self.database_handler = DatabaseHandler()
 
-  def run(self):
+  def run(self) -> tuple[str, bool]:
+    """
+    The function runs the login page.
+    
+    Returns:
+    - uniqueId (str): The unique id entered by the user.
+    - validate_unique_id (bool): The boolean value indicating whether the unique id is valid or not.
+    """
+    
     st.title('Login')
     placeholder = st.empty()
     with placeholder.container():

@@ -4,6 +4,11 @@ import altair as alt
 
 
 class MemoryStats:
+  """
+  The MemoryStats class is responsible for showing the Memory stats.
+  """
+  
+  
   def __init__(self) -> None:
     self.total_memory = 0
     self.available_memory = 0
@@ -13,6 +18,16 @@ class MemoryStats:
 
   
   def prepare_for_showing_stats(self, memory_related_info: dict) -> None:
+    """
+    The function prepares for showing the memory stats.
+    
+    Args:
+    - memory_related_info (dict): The dictionary containing the memory related information.
+    
+    Returns:
+    - None
+    """
+    
     self.total_memory = memory_related_info["memory_total"]
     self.available_memory = memory_related_info["memory_available"]
     self.memory_usage = memory_related_info["memory_percent"]
@@ -22,6 +37,16 @@ class MemoryStats:
   
 
   def run(self, memory_stats: dict) -> None:
+    """
+    The function runs the memory stats.
+    
+    Args:
+    - memory_stats (dict): The dictionary containing the memory stats.
+    
+    Returns:
+    - None
+    """
+    
     placeholder_memory = st.empty()
     self.dataframe_memory_usage.loc[len(self.dataframe_memory_usage)] = [self.cnt, memory_stats["memory_percent"]]
     self.cnt += 1

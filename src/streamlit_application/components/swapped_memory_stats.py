@@ -1,9 +1,14 @@
 import pandas as pd
-import streamlit as st
 import altair as alt
+import streamlit as st
 
 
 class SwappedMemoryStats:
+  """
+  The SwappedMemoryStats class is responsible for showing the Swapped Memory stats.
+  """
+  
+  
   def __init__(self) -> None:
     self.total_memory = 0
     self.available_memory = 0
@@ -13,6 +18,16 @@ class SwappedMemoryStats:
 
   
   def prepare_for_showing_stats(self, swapped_memory_related_info: dict) -> None:
+    """
+    The function prepares for showing the swapped memory stats.
+    
+    Args:
+    - swapped_memory_related_info (dict): The dictionary containing the swapped memory related information.
+    
+    Returns:
+    - None
+    """
+    
     self.total_memory = swapped_memory_related_info["swap_memory_total"]
     self.available_memory = swapped_memory_related_info["swap_memory_free"]
     self.available_used = swapped_memory_related_info["swap_memory_used"]
@@ -23,6 +38,16 @@ class SwappedMemoryStats:
   
 
   def run(self, swapped_memory_stats: dict) -> None:
+    """
+    The function runs the swapped memory stats.
+    
+    Args:
+    - swapped_memory_stats (dict): The dictionary containing the swapped memory stats.
+    
+    Returns:
+    - None
+    """
+    
     placeholder_memory = st.empty()
     self.dataframe_memory_usage.loc[len(self.dataframe_memory_usage)] = [self.cnt, swapped_memory_stats["swap_memory_percent"]]
     self.cnt += 1

@@ -1,7 +1,7 @@
-import consts
 import pymongo
 import certifi
 from time import sleep
+import streamlit as st
 
 
 class DatabaseHandler:
@@ -29,9 +29,13 @@ class DatabaseHandler:
     Returns:
     - pymongo.MongoClient: The MongoDB client.
     """
-    self.connection_string = consts.MongoDBConstants().get_connection_string()
-    self.database_name = consts.MongoDBConstants().get_database_name()
-    self.collection_name = consts.MongoDBConstants().get_collection_name()
+    secret = st.secrets["pymongo"]
+    # self.connection_string = consts.MongoDBConstants().get_connection_string()
+    # self.database_name = consts.MongoDBConstants().get_database_name()
+    # self.collection_name = consts.MongoDBConstants().get_collection_name()
+    self.connection_string = secret["connection_string"]
+    self.database_name = secret["database_name"]
+    self.collection_name = secret["collection_name"]
 
     try:
       self.mongo_client = pymongo.MongoClient(

@@ -6,7 +6,7 @@ class MongoDBConstants:
 
   def __init__(self) -> None:
     self.system_level_collection_info = {
-      "connection_string": f"",
+      "connection_string": f"mongodb+srv://resource-manager:rWU1YruV0pLUtn27@cluster0.tsvu3gt.mongodb.net/",
       "database_name": "users_sample_info",
       "collection_name": "system_level_info"
     }

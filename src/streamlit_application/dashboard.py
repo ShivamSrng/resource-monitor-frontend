@@ -12,11 +12,6 @@ from src.streamlit_application.components.network_stats import NetworkStats
 from src.streamlit_application.components.swapped_memory_stats import SwappedMemoryStats
 from src.streamlit_application.components.process_stats import ProcessStats
 
-st.set_page_config(
-  layout="wide",
-  page_title="Resource Monitoring Dashboard",
-  page_icon="🧊"
-)
 
 class Dashboard:
   """
@@ -25,6 +20,12 @@ class Dashboard:
   
   
   def __init__(self):
+    st.set_page_config(
+      layout="wide",
+      page_title="Resource Monitoring Dashboard",
+      page_icon="🧊"
+    )
+    
     self.tabs = Tabs()
     self.cpu_stats = CPUStats()
     self.disk_stats = DiskStats()
